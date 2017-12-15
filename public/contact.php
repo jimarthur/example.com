@@ -1,29 +1,46 @@
 <?php
+//include non-vendor files
+require '../core/About/src/Validation/Validate.php';
 
-$validEmail = "/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/";
+use About\Validation;
 
-$data = $_POST;
+$valid = new Validate();
 
-$errors = [];
+$input = filter_input_array(INPUT_POST);
 
-#var_dump($data);
-foreach($data as $key => $value){
-    echo "{$key} {$value}";
+$message = null;
 
-    switch($key) {
-        case 'email':
-        if(preg_match($validEmail, $value)!==1) {
-            $errors[$key] = "Invalid Email";
-        }
-        break;
+if(!empty($input)){
 
-        default:
-            if(empty($value)){
-                $errors[$key] = "Invalid {$key}";
-            }
-        break;
-    }
+    $valid->validation = [
+        'first_name'=>[[
+            'rule'=>'notEmpty',
+            'message'=>'Please enter your first name'
+        ]],
+        'last name'=>[[
+            'rule'=>'notEmpty',
+            'message'=>'Please enter your last name'
+            ]],
+            'email'=>[[
+                'rule'=>'email',
+                'message'=>'Please enter a valid email'
+            ],[
+                'rule'=>'notEmpty',
+                'message'=>'Please enter an email'
+            ]],
+            'subject'=>[[
+                'rule'=>'notEmpty',
+                'message'=>'Please enter a subject'
+            ]],
+            'message'=>[[
+                'rule'=>'notEmpty',
+                'message'=>'Please add a message'
+            ]],
+    ];
 }
+
+
+
 ?>
 
 
@@ -51,16 +68,30 @@ foreach($data as $key => $value){
       <div>
           <label for="firstName">First Name</label><br>
           <input type="text" name="first name" id="firstName">
-      </div>
-      <div>
-          <label for="email">Email</label><br>
-          <input type="text" name="last name" id="lasstName">
+          <div style="color: #ff0000;"><?php echo $valid->error('first_name'); ?>
       </div>
       <div>
           <label for="lastName">Last Name</label><br>
-          <input type="text" name="email" id="email">
+          <input type="text" name="last name" id="lastName">
+          <div style="color: #ff0000;"><?php echo $valid->error('last_name'); ?>
       </div>
-
+      <div>
+          <label for="email">Email</label><br>
+          <input type="text" name="email" id="email">
+          <div style="color: #ff0000;"><?php echo $valid->error('email'); ?>
+      </div>
+      <div>
+          <label for="subject">Subject</label><br>
+          <input type="text" name="subject" id="subject">
+          <div style="color: #ff0000;"><?php echo $valid->error('subject'); ?>
+      </div>
+      <div>
+          <label for="message">Message</label><br>
+          <input type="text" name="message" id="message">
+          <div style="color: #ff0000;"><?php echo $valid->error('message'); ?>
+      </div>
+  </div>
+  <input type="submit">
 
   </form>
   </body>
