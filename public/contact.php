@@ -1,47 +1,6 @@
 <?php
 //include non-vendor files
-require '../core/About/src/Validation/Validate.php';
-
-use About\Validation;
-
-$valid = new Validate();
-
-$input = filter_input_array(INPUT_POST);
-
-$message = null;
-
-if(!empty($input)){
-
-    $valid->validation = [
-        'first_name'=>[[
-            'rule'=>'notEmpty',
-            'message'=>'Please enter your first name'
-        ]],
-        'last name'=>[[
-            'rule'=>'notEmpty',
-            'message'=>'Please enter your last name'
-            ]],
-            'email'=>[[
-                'rule'=>'email',
-                'message'=>'Please enter a valid email'
-            ],[
-                'rule'=>'notEmpty',
-                'message'=>'Please enter an email'
-            ]],
-            'subject'=>[[
-                'rule'=>'notEmpty',
-                'message'=>'Please enter a subject'
-            ]],
-            'message'=>[[
-                'rule'=>'notEmpty',
-                'message'=>'Please add a message'
-            ]],
-    ];
-}
-
-
-
-?>
+require '../core/processContactForm.php'; ?>
 
 
 
@@ -64,7 +23,7 @@ if(!empty($input)){
 <button onclick="document.getElementById('header').style='color:#ff0000;'">click me
 </button>
   <p>Welcome to my contact page.</p>
-  <form>
+  <form method="post">
       <div>
           <label for="firstName">First Name</label><br>
           <input type="text" name="first name" id="firstName">
