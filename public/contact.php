@@ -10,29 +10,29 @@ $content = <<<EOT
       <div>
           <label for="firstName">First Name</label><br>
           <input type="text" name="first name" id="firstName">
-          <div style="color: #ff0000;">{$valid->error('first_name')}
+          <div class="text-error" style="color: #ff0000;">{$valid->error('first_name')}</div>
       </div>
       <div>
           <label for="lastName">Last Name</label><br>
           <input type="text" name="last name" id="lastName">
-          <div style="color: #ff0000;">{$valid->error('last_name')}
+          <div class="text-error" style="color: #ff0000;">{$valid->error('last_name')}</div>
       </div>
       <div>
           <label for="email">Email</label><br>
           <input type="text" name="email" id="email">
-          <div style="color: #ff0000;">{$valid->error('email')}
+          <div class="text-error" style="color: #ff0000;">{$valid->error('email')}</div>
       </div>
       <div>
           <label for="subject">Subject</label><br>
           <input type="text" name="subject" id="subject">
-          <div style="color: #ff0000;">{$valid->error('subject')}
+          <div class="text-error" style="color: #ff0000;">{$valid->error('subject')}</div>
       </div>
       <div>
           <label for="message">Message</label><br>
           <input type="text" name="message" id="message">
-          <div style="color: #ff0000;">{$valid->error('message')}
+          <div class="text-error" style="color: #ff0000;">{$valid->error('message')}</div>
       </div>
-  </div>
+
   <input type="submit">
 
   </form>

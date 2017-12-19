@@ -9,8 +9,8 @@
   <body>
 
     <div id="Wrapper">
-        <nav class="top-nav clearfix">
-            <a href="index.html" class="pull-left" href="/">Site Logo</a>
+        <nav class="top-nav">
+            <a href="index.php" class="pull-left" href="/">Site Logo</a>
             <ul class="nav-inline pull-right" role="navigation">
                 <li><a href="index.php">Home</a></li>
                 <li><a href="resume.php">Resume</a></li>
@@ -30,9 +30,9 @@
             </div>
         </div>
 
-        <div id="Footer" class="clearfix">
+        <div id="Footer">
             <small>&copy; 2017 - MyAwesomeSite.com</small>
-            <ul class="nav-inline pull-right" role="navigation">
+            <ul role="navigation">
                 <li><a href="terms.html">Terms</a></li>
                 <li><a href="privacy.html">Privacy</a></li>
             </ul>
